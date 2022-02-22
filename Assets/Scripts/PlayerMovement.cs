@@ -26,9 +26,9 @@ public class PlayerMovement : MonoBehaviour
         }
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-
         Vector3 move = transform.right * x + transform.forward * z;
-        if (Input.GetButtonDown("Run"))
+        
+        if (Input.GetKey("left shift"))
         {
             speed = 18f;
         }
@@ -36,13 +36,12 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = 12f;
         }
-
         controller.Move(move * speed * Time.deltaTime);
+        
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
-
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
