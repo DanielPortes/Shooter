@@ -22,6 +22,10 @@ public static class src_Models
         public bool ViewXInverted = true;
         public bool ViewYInverted = false;
 
+        [Header("Movement Settings")]
+        public bool sprintingHold;
+        public float MovementSmoothing;
+        
         [Header("Movement - Running")] 
         public float RunningForwardSpeed;
         public float RunningStrafeSpeed;
@@ -34,6 +38,16 @@ public static class src_Models
         [Header("Jumping")]
         public float jumpingHeight;
         public float jumpingFalloff;
+        public float FallingSmoothing;
+
+        [Header("Speed Effectors")]
+        public float SpeedEffector = 1;
+
+        public float CrouchSspeedEffector;
+        public float ProneSpeedEffector;
+        public float FallingSpeedEffector;
+        
+
     }
 
     [Serializable]
@@ -42,9 +56,6 @@ public static class src_Models
         public float cameraHeight;
         public CapsuleCollider stanceCollider;
     }
-    
-
-    
 
     #endregion
 }
