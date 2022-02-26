@@ -245,6 +245,34 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""245acc7c-71c4-4f20-b583-4a3edf55dd75"",
+            ""actions"": [
+                {
+                    ""name"": ""clique"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f61f1f0-e480-4f10-bb43-9ac9a44ab2af"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6fc2b3b7-ae4b-4a13-9dca-a74cbb01cef1"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""clique"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -259,6 +287,9 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         m_Charachter_Sprint = m_Charachter.FindAction("Sprint", throwIfNotFound: true);
         m_Charachter_SprintReleased = m_Charachter.FindAction("SprintReleased", throwIfNotFound: true);
         m_Charachter_Shoot = m_Charachter.FindAction("Shoot", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_clique = m_Menu.FindAction("clique", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -403,6 +434,39 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         }
     }
     public CharachterActions @Charachter => new CharachterActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_clique;
+    public struct MenuActions
+    {
+        private @DefaultInput m_Wrapper;
+        public MenuActions(@DefaultInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @clique => m_Wrapper.m_Menu_clique;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @clique.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnClique;
+                @clique.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnClique;
+                @clique.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnClique;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @clique.started += instance.OnClique;
+                @clique.performed += instance.OnClique;
+                @clique.canceled += instance.OnClique;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     public interface ICharachterActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -413,5 +477,9 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnSprintReleased(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnClique(InputAction.CallbackContext context);
     }
 }

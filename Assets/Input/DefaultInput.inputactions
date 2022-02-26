@@ -223,6 +223,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Menu",
+            "id": "245acc7c-71c4-4f20-b583-4a3edf55dd75",
+            "actions": [
+                {
+                    "name": "clique",
+                    "type": "Button",
+                    "id": "6f61f1f0-e480-4f10-bb43-9ac9a44ab2af",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6fc2b3b7-ae4b-4a13-9dca-a74cbb01cef1",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "clique",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
