@@ -89,6 +89,15 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Value"",
+                    ""id"": ""35cc19e9-2fa3-4f4f-828a-035d42f2ea45"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -206,7 +215,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""41ccc004-3d4a-4f35-a2d6-0ec5b3029fe8"",
                     ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sprint"",
@@ -221,6 +230,17 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SprintReleased"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83c4a14a-e985-4fd3-bdbe-aed41876fd6f"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -238,6 +258,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         m_Charachter_Prone = m_Charachter.FindAction("Prone", throwIfNotFound: true);
         m_Charachter_Sprint = m_Charachter.FindAction("Sprint", throwIfNotFound: true);
         m_Charachter_SprintReleased = m_Charachter.FindAction("SprintReleased", throwIfNotFound: true);
+        m_Charachter_Shoot = m_Charachter.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,6 +325,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Charachter_Prone;
     private readonly InputAction m_Charachter_Sprint;
     private readonly InputAction m_Charachter_SprintReleased;
+    private readonly InputAction m_Charachter_Shoot;
     public struct CharachterActions
     {
         private @DefaultInput m_Wrapper;
@@ -315,6 +337,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         public InputAction @Prone => m_Wrapper.m_Charachter_Prone;
         public InputAction @Sprint => m_Wrapper.m_Charachter_Sprint;
         public InputAction @SprintReleased => m_Wrapper.m_Charachter_SprintReleased;
+        public InputAction @Shoot => m_Wrapper.m_Charachter_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Charachter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -345,6 +368,9 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                 @SprintReleased.started -= m_Wrapper.m_CharachterActionsCallbackInterface.OnSprintReleased;
                 @SprintReleased.performed -= m_Wrapper.m_CharachterActionsCallbackInterface.OnSprintReleased;
                 @SprintReleased.canceled -= m_Wrapper.m_CharachterActionsCallbackInterface.OnSprintReleased;
+                @Shoot.started -= m_Wrapper.m_CharachterActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_CharachterActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_CharachterActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_CharachterActionsCallbackInterface = instance;
             if (instance != null)
@@ -370,6 +396,9 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                 @SprintReleased.started += instance.OnSprintReleased;
                 @SprintReleased.performed += instance.OnSprintReleased;
                 @SprintReleased.canceled += instance.OnSprintReleased;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
             }
         }
     }
@@ -383,5 +412,6 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         void OnProne(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnSprintReleased(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }

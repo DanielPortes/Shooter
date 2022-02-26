@@ -52,13 +52,27 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Enemy\ZombieController.cs" />
      <Compile Include="Assets\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Scripts\Character\src_CharacterController.cs" />
-     <Compile Include="Assets\Scripts\src_Models.cs" />
+     <Compile Include="Assets\Art Notes\Simple City Generator\Scripts\AN_SimpleDestroy.cs" />
+     <Compile Include="Assets\Supercyan Character Pack Zombie Sample\Scripts\ZombieFree.cs" />
      <Compile Include="Assets\Scripts\Gun.cs" />
      <Compile Include="Assets\Input\DefaultInput.cs" />
+     <Compile Include="Assets\Art Notes\Simple City Generator\Prefab\Hero\AN_HeroController.cs" />
+     <Compile Include="Assets\Supercyan Character Pack Zombie Sample\Scripts\ZombieCameraLogic.cs" />
+     <Compile Include="Assets\Supercyan Character Pack Zombie Sample\Scripts\ZombieCharacterControl.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Art Notes\Simple City Generator\Scripts\AN_CitySample.cs" />
      <Compile Include="Assets\Scripts\Weapons\src_WeaponController.cs" />
+     <Compile Include="Assets\Art Notes\Simple City Generator\Scripts\AN_SimpleCityGenerator.cs" />
+     <Compile Include="Assets\Scripts\src_Models.cs" />
+     <Compile Include="Assets\Target.cs" />
+     <Compile Include="Assets\Fire.cs" />
+     <Compile Include="Assets\bullet.cs" />
+     <None Include="Assets\Supercyan Character Pack Zombie Sample\Shaders\Legacy\CelShader.shader" />
+     <None Include="Assets\Supercyan Character Pack Zombie Sample\Shaders\SupercyanShader.shader" />
+     <None Include="Assets\Supercyan Character Pack Zombie Sample\Shaders\SupercyanShaderLighting.cginc" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.29f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -680,6 +694,14 @@
     <ProjectReference Include="Unity.ProBuilder.Examples.Editor.csproj">
       <Project>{aeaee581-ae8e-40fa-8aa5-785d40685ce7}</Project>
       <Name>Unity.ProBuilder.Examples.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{d7ab51e6-4e69-7943-3f68-f7460704c5e4}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{f2875e56-e75d-6dcd-d949-522594e1832d}</Project>
+      <Name>NavMeshComponents</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
