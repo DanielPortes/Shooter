@@ -3,7 +3,7 @@ Unity Game
 ## integrantes
 Feito por Daniel Fagundes e Gabriel S.
 
-Outros integrantes passados nao fizeram parte desse trabalho!
+Outros integrantes passados nao fizeram parte desse trabalho! Entao, por favor, misericordia das almas inocentes :D
 
 ## controles:
 
