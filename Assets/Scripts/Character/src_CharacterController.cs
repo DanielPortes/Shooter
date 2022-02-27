@@ -294,7 +294,7 @@ public class src_CharacterController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            Target target = hit.transform.GetComponent<Target>();
+            ZombieController target = hit.transform.GetComponent<ZombieController>();
             if (target != null)
             {
                 target.TakeDamage(damage);

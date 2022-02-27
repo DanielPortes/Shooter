@@ -11,7 +11,7 @@ public class Fire : MonoBehaviour
     {
         Transform pos = transform.Find("ponto");
         Transform bullet = Instantiate(pfBullet, pos.transform.position, Quaternion.identity);
-        Vector3 shootDir = pos.transform.position.normalized;
+        Vector3 shootDir = transform.forward;
         bullet.GetComponent<bullet>().Setup(shootDir);
     }
 }

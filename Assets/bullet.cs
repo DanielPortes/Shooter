@@ -21,4 +21,6 @@ public class bullet : MonoBehaviour
         transform.position += shootDir * moveSpeed* Time.deltaTime;
         
     }
+
+    
 }

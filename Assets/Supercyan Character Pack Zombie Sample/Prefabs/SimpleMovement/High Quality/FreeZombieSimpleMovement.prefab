@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 95446636183784616}
   - component: {fileID: 54174046382449110}
   - component: {fileID: 136043099458248162}
-  - component: {fileID: 1174487985842864474}
+  - component: {fileID: 5898511779653686073}
   m_Layer: 0
   m_Name: FreeZombieSimpleMovement
   m_TagString: Untagged
@@ -413,7 +413,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &1174487985842864474
+--- !u!114 &5898511779653686073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -422,9 +422,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1190601789873990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f951935c502bdaf4681e9844adfe5ab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 714a8b881a3c88b4ab6d8f82058e6825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sightRange: 20
   health: 50
 --- !u!1 &1236329582464368
 GameObject:
