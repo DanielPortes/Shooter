@@ -1,7 +1,7 @@
 # Shooter
 Unity Game
 ## integrantes
-Feito por Daniel Fagundes e Gabriel S.
+Feito por Daniel Fagundes e Gabriel Santos
 
 Outros integrantes passados nao fizeram parte desse trabalho! Entao, por favor, misericordia das almas inocentes :D
 
